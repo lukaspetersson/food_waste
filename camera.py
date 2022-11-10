@@ -9,9 +9,12 @@ import sys
 import subprocess
 import os
 
-BUCKET = "s3://your-sws-s3-bucket-here/"
+from dotenv import dotenv_values
+env_var = dotenv_values(".env")
+
+BUCKET = env_var["S3_BUCKET"]
 SRC_DIR = "/home/pi/Desktop/images/"
-DEST = BUCKET + "sub-folder-in-your-bucket-here/"
+DEST = BUCKET + "upload"
 CURRENT_DATE = dt.datetime.now().strftime('%m/%d/%Y %H:%M:%S')
 IMAGE_NAME = dt.datetime.now().strftime('%m%d%Y%H%M%S')
 
